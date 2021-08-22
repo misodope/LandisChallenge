@@ -1,8 +1,9 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "misodope",
-  PASSWORD: null,
-  DB: "landis_challenge",
+  HOST: process.env.DATABASE_URL || "localhost",
+  USER: process.env.DATABASE_USER || "misodope",
+  PASSWORD: process.env.DATABASE_PASSWORD || null,
+  DB: process.env.DATABASE || "landis_challenge",
+  port: process.env.DATABASE_PORT || 5432,
   dialect: "postgres",
   pool: {
     max: 5,
