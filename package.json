@@ -6,6 +6,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "cd app/frontend && npm run build"
+    "start": "cd app/frontend && yarn && yarn build"
   }
 }
