@@ -1,0 +1,11 @@
+{
+  "name": "landis",
+  "description": "A Vue.js project",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "cd app/backend && yarn start & cd app/frontend && yarn build"
+  },
+}
