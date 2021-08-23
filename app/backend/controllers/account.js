@@ -46,6 +46,8 @@ const list = (req, res) => {
 };
 
 const getStatistics = async (req, res) => {
+  console.log("getStatistics called");
+
   try {
     const lowAccounts = await Account.findAndCountAll({
       where: { status: 'low' },
@@ -69,6 +71,7 @@ const getStatistics = async (req, res) => {
 
     res.status(200).send(statistics);
   } catch (error) {
+    console.error(error);
     res.status(error.status || 404)
       .json({
         message: error.message,

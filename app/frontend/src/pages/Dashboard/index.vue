@@ -41,12 +41,9 @@ export default {
   async mounted () {
     try {
       const statistics = await accountsApi.getStatistics();
-
+      console.log("STATISTICS", statistics);
       this.counts = statistics.counts;
-
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1500)
+      this.isLoading = false;
     } catch (error) {
       throw error;
     }

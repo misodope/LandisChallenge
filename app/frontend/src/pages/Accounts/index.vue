@@ -75,10 +75,7 @@ export default {
           totalItems
         };
         this.accounts = accounts;
-
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1500);
+        this.isLoading = false;
       } catch (error) {
         throw {
           message: `Error fetching accounts for page ${page + 1}`,
