@@ -21,7 +21,6 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  console.log(process.env);
   res.status(200).sendFile(path.join(__dirname, '../../frontend/index.html'));
 });
 
