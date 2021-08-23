@@ -1,8 +1,18 @@
-import post from './service';
+import apiService from './service';
 
 const list = async (data) => {
   try {
-    const response = await post('/api/accounts/list', data);
+    const response = await apiService('post', '/api/accounts/list', data);
+
+    return response;
+  } catch (e) {
+    throw e;
+  }
+}
+
+const getStatistics = async () => {
+  try {
+    const response = await apiService('get', '/api/accounts/statistics');
 
     return response;
   } catch (e) {
@@ -12,4 +22,5 @@ const list = async (data) => {
 
 export default {
   list,
+  getStatistics,
 }

@@ -6,6 +6,8 @@ const router = express.Router();
 const accountsApi = (app) => {
   router.post('/list', accountController.list);
 
+  router.get('/statistics', accountController.getStatistics);
+
   app.use('/api/accounts', router);
 };
 

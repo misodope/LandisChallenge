@@ -1,8 +1,18 @@
 <template>
-  <div id="dashboard" class="dashboard">
+  <div class="dashboard">
     <loader v-if="isLoading"/>
-    <div v-show="!isLoading" class="dasboard__container">
-      Dashboard
+    <div v-show="!isLoading" class="dashboard__container">
+      <section>
+        <div class="dashboard__status-cards">
+          <dashboard-card
+            v-for="([status, count], index) in Object.entries(counts)"
+            :key="index"
+            :count="count"
+            :status="status"
+          />
+        </div>
+      </section>
+
     </div>
   </div>
 </template>
@@ -10,26 +20,32 @@
 <script>
 import accountsApi from '../../api/accounts';
 import Loader from "../../components/Loader/index.vue";
+import DashboardCard from "../../components/DashboardCard/index.vue";
 
 export default {
   name: 'accounts',
   components: {
     'loader': Loader,
+    'dashboard-card': DashboardCard,
   },
   data () {
     return {
       isLoading: true,
+      counts: {},
     }
   },
-  mounted () {
-    accountsApi.list(this.pageData)
-      .then((data) => {
-        const { totalItems, accounts, totalPages, currentPage } = data;
+  async mounted () {
+    try {
+      const statistics = await accountsApi.getStatistics();
 
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1500)
-      })
+      this.counts = statistics.counts;
+
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1500)
+    } catch (error) {
+      throw error;
+    }
   },
 }
 </script>
@@ -38,13 +54,20 @@ export default {
 .dashboard {
   color: #2c3e50;
   display: flex;
-  flex-direction: column;
-  align-items: center;
 
   &__container {
+    width: 100%;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__status-cards {
     display: flex;
-    flex: 0 1 20%;
-    flex-wrap: wrap;
+    width: 100%;
   }
 }
 </style>

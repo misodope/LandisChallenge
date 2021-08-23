@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const baseUrl = process.env.NODE_ENV === 'production' ?  window.location.protocol + "//" + window.location.host : 'http://localhost:1337';
 
-const post = (url, params = {}) => {
+const apiService = (method, url, params = {}) => {
   return axios({
-    method: 'post',
+    method,
     url: baseUrl + url,
     data: params,
   })
@@ -12,4 +12,4 @@ const post = (url, params = {}) => {
   .catch(error => error);
 };
 
-export default post;
+export default apiService;

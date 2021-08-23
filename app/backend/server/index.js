@@ -21,6 +21,7 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
+  console.log("HOI");
   app.use(express.static(path.join(__dirname, '../../frontend')));
   app.get('*', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, '../../frontend/index.html'));
@@ -32,8 +33,7 @@ db.sequelize.sync({ force: true }).then(() => {
 
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
-    console.log(__dirname);
-    console.log('dist path',path.join(__dirname, '../../frontend/dist'));
+
     accountsApi(app);
   });
 });

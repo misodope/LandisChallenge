@@ -45,6 +45,40 @@ const list = (req, res) => {
     });
 };
 
+const getStatistics = async (req, res) => {
+  try {
+    const lowAccounts = await Account.findAndCountAll({
+      where: { status: 'low' },
+    });
+
+    const mediumAccounts = await Account.findAndCountAll({
+      where: { status: 'medium' },
+    });
+
+    const highAccounts = await Account.findAndCountAll({
+      where: { status: 'high' },
+    });
+
+    const statistics = {
+      counts: {
+        low: lowAccounts.count,
+        medium: mediumAccounts.count,
+        high: highAccounts.count,
+      }
+    };
+
+    res.status(200).send(statistics);
+  } catch (error) {
+    res.status(error.status || 404)
+      .json({
+        message: error.message,
+        status: error.status,
+      })
+      .end();
+  }
+};
+
 module.exports = {
   list,
+  getStatistics,
 };
