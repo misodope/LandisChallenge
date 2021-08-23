@@ -12,7 +12,7 @@ const list = async (data) => {
 
 const getStatistics = async () => {
   try {
-    const response = await apiService('get', '/api/accounts/statistics');
+    const response = await apiService('post', '/api/accounts/statistics');
 
     return response;
   } catch (e) {

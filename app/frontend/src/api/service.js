@@ -8,10 +8,7 @@ const apiService = (method, url, params = {}) => {
     url: baseUrl + url,
     data: params,
   })
-  .then(response => {
-    console.log(response);
-    return response.data;
-  })
+  .then(response => response.data)
   .catch(error => error);
 };
 

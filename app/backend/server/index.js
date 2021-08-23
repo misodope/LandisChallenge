@@ -21,7 +21,6 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
-  console.log("HOI");
   app.use(express.static(path.join(__dirname, '../../frontend')));
   app.get('*', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, '../../frontend/index.html'));
