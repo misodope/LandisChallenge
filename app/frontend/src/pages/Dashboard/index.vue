@@ -5,7 +5,7 @@
       <section>
         <div class="dashboard__status-cards">
           <dashboard-card
-            v-for="([status, count], index) in Object.entries(counts)"
+            v-for="([status, count], index) in counts.low && Object.entries(counts)"
             :key="index"
             :count="count"
             :status="status"
