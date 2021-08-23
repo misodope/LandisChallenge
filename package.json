@@ -6,6 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "preinstall": "npm install -g yarn"
+    "preinstall": "npm install -g yarn",
+    "start": "cd backend && yarn && node server/index.js",
+    "heroku-postbuild": "cd frontend && yarn && yarn build"
   }
 }
