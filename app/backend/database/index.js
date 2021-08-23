@@ -18,12 +18,18 @@ let sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
+    ssl: true,
+    dialectOptions: {
+      ssl: {
+          rejectUnauthorized: false
+      }
+    },
     pool: {
       max: dbConfig.pool.max,
       min: dbConfig.pool.min,
       acquire: dbConfig.pool.acquire,
       idle: dbConfig.pool.idle
-    }
+    },
   })
 }
 
