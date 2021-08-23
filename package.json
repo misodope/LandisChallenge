@@ -7,6 +7,6 @@
   "private": true,
   "scripts": {
     "preinstall": "npm install -g yarn",
-    "start": "cd app/backend && yarn && yarn start & cd app/frontend && yarn && yarn build"
+    "start": "cd app/backend && yarn && yarn build & cd app/frontend && yarn && yarn build"
   }
 }
