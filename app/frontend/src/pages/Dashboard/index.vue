@@ -31,7 +31,11 @@ export default {
   data () {
     return {
       isLoading: true,
-      counts: {},
+      counts: {
+        low: 0,
+        medium: 0,
+        high: 0,
+      },
     }
   },
   async mounted () {
