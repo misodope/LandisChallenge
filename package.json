@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npm install -g yarn && cd app/backend && yarn && yarn start & cd app/frontend && yarn && yarn build"
+    "preinstall": "npm install -g yarn",
+    "start": "cd app/backend && yarn && yarn start & cd app/frontend && yarn && yarn build"
   }
 }

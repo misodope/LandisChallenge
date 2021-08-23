@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: process.env.DATABASE_URL || "localhost",
+  HOST: process.env.DATABASE_HOST || "localhost",
   USER: process.env.DATABASE_USER || "misodope",
   PASSWORD: process.env.DATABASE_PASSWORD || null,
   DB: process.env.DATABASE || "landis_challenge",
