@@ -1,2 +1,2 @@
-web: ls -a && cd frontend && yarn && yarn build
-server: ls -a && cd backend && yarn && yarn start
+web: cd app/frontend && yarn && yarn build
+server: cd app/backend && yarn && yarn start
