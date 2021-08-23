@@ -20,9 +20,12 @@ app.use(cors({
 // to support URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../../frontend/index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../front/dist')));
+  app.get('*', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, '../../frontend/index.html'));
+  });
+}
 
 db.sequelize.sync({ force: true }).then(() => {
   accountsProcessor();
