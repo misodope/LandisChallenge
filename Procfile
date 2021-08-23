@@ -1,2 +1,2 @@
-web: cd app/frontend && yarn && yarn dev
-server: cd app/backend && yarn && yarn build
+web: cd app/frontend && yarn && yarn build
+server: cd app/backend && yarn && yarn start
