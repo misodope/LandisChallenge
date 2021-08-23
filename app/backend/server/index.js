@@ -32,7 +32,8 @@ db.sequelize.sync({ force: true }).then(() => {
 
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
-    console.log('dist path', path.join(__dirname, '../../frontend/dist'));
+    console.log(__dirname);
+    console.log('dist path',path.join(__dirname, '../../frontend/dist'));
     accountsApi(app);
   });
 });
