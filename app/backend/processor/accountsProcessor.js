@@ -2,7 +2,7 @@ const fs = require('fs');
 const JSONStream = require('JSONStream');
 const db = require('../database');
 
-const FILE_PATH = "/Users/misodope/Downloads/Coding_Challenge/accounts.jsonl";
+const FILE_PATH = process.env.JSON_URL || "/Users/misodope/Downloads/Coding_Challenge/accounts.jsonl";
 
 const stream = () => {
   const fileStream = fs.createReadStream(FILE_PATH, { encoding: 'utf-8' });
