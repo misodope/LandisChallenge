@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:1337';
+const baseUrl = process.env.BASE_URL || 'http://localhost:1337';
 
 const post = (url, params = {}) => {
   console.log(baseUrl + url);
